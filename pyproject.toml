@@ -1,0 +1,8 @@
+[project]
+name = "hamsim"
+version = "0.0.1"
+dependencies = ["numpy", "scipy"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

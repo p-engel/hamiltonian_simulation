@@ -1,9 +1,0 @@
-pyproject.toml
-src/hamsim/__init__.py
-src/hamsim/operators.py
-src/hamsim.egg-info/PKG-INFO
-src/hamsim.egg-info/SOURCES.txt
-src/hamsim.egg-info/dependency_links.txt
-src/hamsim.egg-info/requires.txt
-src/hamsim.egg-info/top_level.txt
-tests/test_operators.py

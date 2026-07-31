@@ -1,19 +1,47 @@
 # hamiltonian
-from numpy import array, pi
+from numpy import array, pi, zeros
 from hamsim.operators import kron_at
 
+def X(): return array([[0, 1], [1, 0]])
 
-def ising(J=pi, h=2*pi):
-    """A transverse-field Ising Hamiltonian for 2 qubits with
+def Z(): return array([[1, 0], [0, -1]])
+
+def ops(A, n):
+    """define set of operators of at site n in hilbert space 2**n by
+    2**n
+
+    """
+    return [kron_at(A, i, n) for i in range(n)]
+    
+def ising(J=pi, h=2*pi, n=2):
+    """A transverse-field Ising Hamiltonian for n qubits with
     interaction constant J and degenerate energy h
 
     """
-    n = 2
-    X = array([[0, 1], [1, 0]])
-    Z = array([[1, 0], [0, -1]])
-    Xn = [kron_at(X, i, n) for i in range(n)]
-    Zn = [kron_at(Z, i, n) for i in range(n)]
+    Zn = ops(Z(), n); Xn = ops(X(), n)
+    H = h * sum(Xn)
+    
+    for i in range(n - 1):
+        H += J * ( Zn[i] @ Zn[i+1] )
 
-    H = J*(Zn[0] @ Zn[1]) + h*(Xn[0] + Xn[1])
+    return H
+
+def ising_trotter(J=pi, h=2*pi, n=10):
+    """An n-qubit transverse field Ising Hamiltonian expressed in terms
+    of set of local interactions in subspace m by m where m = 2
+
+    """
+    Zn = ops(Z(), n); Xn = ops(X(), n)
+
+    l = n - 1  # number of local interactions or gates
+    A = [ J * Zn[i] @ Zn[i+1] for i in range(l) ]
+    B = [ h * Xn[i]  for i in range(n) ]
+    H = []  # set of local interactions
+    for i in range(l):
+        Hi = A[i] + (B[i] + B[i+1])/2 
+        H.append(Hi)
+
+    # correction terms to edge qubits
+    H[0] += (h/2) * Xn[0]; H[-1] += (h/2) * Xn[n-1]
 
     return H

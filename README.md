@@ -50,18 +50,18 @@ dramatically faster.**
 
 At $N=12$, exact matrix exponentiation of the systems evolution takes
 $\approx 27 {\rm s}$ while the evolution via Trotterization takes
-$\approx 5 {\rm ms}$, roughly a 5400x speedup. The exact method
-grows approximately as $e^{(1.53)N}$, which is somewhat less than the
-expected cubic scaling $e^{ln(8)N}$, with cost $\mathcal{O}(8^N)$, for
-dense matrix exponentiation. (The discrepancy plausibly reflects
-optimized linear algebra routines in scipy's module: `expm`, rather
-than a departure from the theoretical asymptotic.) The implementation
-of Trotter product formula costs $\mathcal{O}(N \cdot 2^N)$ per
-trotter step, since a classical computer must store the full
-$\mathcal{O}(2^N)$ dimensional state. Both algorithms are exponential
-in $N$, but trotterization has a much smaller effective exponent and
-thus yields the dramatic speedup observed in the Figure on runtime
-scaling cost.
+$\approx 5 {\rm ms}$, roughly a 5400x speedup observed in the figure
+below on runtime scaling cost. The exact method grows approximately as
+$e^{(1.53)N}$, which is somewhat less than the expected cubic scaling
+$e^{ln(8)N}$, with cost $\mathcal{O}(8^N)$, for dense matrix
+exponentiation. (The discrepancy plausibly reflects optimized linear
+algebra routines in scipy's module: `expm`, rather than a departure
+from the theoretical asymptotic.) The implementation of Trotter
+product formula costs $\mathcal{O}(N \cdot 2^N)$ per trotter step,
+since a classical computer must store the full $\mathcal{O}(2^N)$
+dimensional state. Both algorithms are exponential in $N$, but
+trotterization has a much smaller effective exponent and thus yields
+the dramatic speedup observed here.
 
 <div align="center">
   <img src="docs/figures/runtime_scaling.png" width="500">

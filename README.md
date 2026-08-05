@@ -1,7 +1,13 @@
 # Hamiltonian Simulation
 
-Exact and Trotter-Suzuki simulation of the transverse-field Ising
-model, with error and runtime analysis benchmarked against theory.
+Hamiltonian simulation is a fundamental primitive underlying quantum
+algorithms for quantum chemistry, condensed matter, and many-body
+physics. Product-formula methods such as Trotter-Suzuki remain one of
+the canonical approaches for approximating quantum dynamics and
+provide an accessible entry point toward more advanced techniques such
+as qubitization and block encoding. This repository implements exact
+and Trotter-Suzuki simulation of the transverse-field Ising model,
+with error and runtime analysis benchmarked against theory.
 
 ```math
 \mathcal{H} = J\sum_{i = 1}^{N-1} Z_iZ_{i + 1} +
@@ -10,13 +16,21 @@ h\sum_{i=1}^{N}X_i.
 
 ## Objective
 
-The aim is to build toward simulating open quantum systems. As a
-concrete first step, this repository implements and benchmarks
-Hamiltonian simulation using Trotterization. The local interaction
-implementation from Trotter product formula scales far better than the
-dense matrix exponential simulation. The result highlights the
-connection to the polynomial-time advantage Trotterization provides on
-quantum hardware.
+The long-term objective is to develop scalable numerical methods for
+simulating quantum dynamics, ultimately extending these techniques to
+open quantum systems.  As a first step, this repository implements
+exact and Trotter-Suzuki simulation of the transverse-field Ising
+model, validating theoretical error bounds and benchmarking
+computational performance.  Exploiting the locality of the Trotter
+product formula avoids exponentiating the full Hamiltonian, yielding
+dramatically better scaling than dense matrix exponentiation.
+Exploiting the locality of the Trotter product formula avoids
+exponentiating the full Hamiltonian, yielding dramatically better
+scaling than dense matrix exponentiation.  The implementation also
+illustrates why product-formula methods are central to quantum
+computing: on quantum hardware, local evolution operators decompose
+naturally into quantum gates, allowing the simulation cost to scale
+polynomially with system size.
 
 ## Result
 
@@ -110,3 +124,10 @@ hamiltonian-simulation/
 - `first_order_trotter.ipynb` — first-order Trotter (dense vs. TPF)
 - `error_scaling.ipynb` — error scaling and runtime benchmark
 - (Second-order Suzuki: follow-up)
+
+## Planned extensions
+- Second-order Suzuki product formulas
+- Higher-order Trotter error analysis
+- Comparison with qDRIFT
+- Block encoding and LCU methods
+- Hamiltonian simulation of open quantum systems

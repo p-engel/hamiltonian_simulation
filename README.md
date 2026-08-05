@@ -70,7 +70,7 @@ pip install jupyter matplotlib ipykernel
 
 ## Repository structure
 
-\```
+```
 quantum-hamiltonian-simulation/
 ├── README.md
 ├── pyproject.toml
@@ -89,7 +89,7 @@ quantum-hamiltonian-simulation/
     ├── test_operators.py
     ├── test_hamiltonian.py
     └── test_evolution.py
-\```
+```
 
 ## Notebooks
 - `exact_time_evolution.ipynb` — exact diagonalization and time evolution

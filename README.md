@@ -3,6 +3,11 @@
 Exact and Trotter-Suzuki simulation of the transverse-field Ising
 model, with error and runtime analysis benchmarked against theory.
 
+```math
+\mathcal{H} = J\sum_{i \neq j}^{N-1} Z_iZ_j +
+h\sum_{i}^{N-1}\left( X_i + X_{i + 1} \right).
+```
+
 ## Objective
 
 The aim is to build toward simulating open quantum systems. As a
@@ -22,7 +27,7 @@ For a first-order product formula, Lloyd (1996)	bounds the error by
 
 ```math
 \vert\vert U - U_{\rm trott} \vert\vert \leq (t^2 / 2n)
-\sum_{i \lt j} \vert\vert[H_i, H_j ] \vert\vert
+\sum_{i \lt j} \vert\vert[H_i, H_j ] \vert\vert ,
 ```
 
 where $U = e^{-iHt}$ is the exact evolution operator, and $U_{\rm

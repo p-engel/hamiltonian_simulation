@@ -52,21 +52,23 @@ expected cubic scaling $e^{ln(8)N}$ in Hilbert space dimension
 ($\mathcal{O}(8^N)$) for dense matrix exponentiation (plausibly
 reflecting optimized linear algebra routines in scipy's `expm` rather
 than a departure from the theoretical asymptotic). The local
-implementation costs $\mathcal{O}(N \cdot 2^N)$ per trotter step and
-grows as $e^{ln(N\cdot0.6)N}$, since a classical computer must store
-the full $\mathcal{O}(2^N)$ dimensional state. Both algorithms are
-exponential in $N$, but trotterization's much smaller effective
-exponent explains the dramatic speedup observed here. The genuine
-polynomial-time advantage Trotterization is known for is specific to
-real quantum hardware: a single local gate costs $\mathcal{O}(1)$,
-independent of $N$, and a full Trotter step needs only
-$\mathcal{O}(N)$ such gates, polynomial overall, not exponential.
+implementation costs $\mathcal{O}(N \cdot 2^N)$ per trotter step,
+since a classical computer must store the full $\mathcal{O}(2^N)$
+dimensional state. Both algorithms are exponential in $N$, but
+trotterization's much smaller effective exponent explains the dramatic
+speedup observed here. The genuine polynomial-time advantage
+Trotterization is known for is specific to real quantum hardware: a
+single local gate costs $\mathcal{O}(1)$, independent of $N$, and a
+full Trotter step needs only $\mathcal{O}(N)$ such gates, polynomial
+overall, not exponential.
 
 ## Setup
 pip install -e .
 pip install jupyter matplotlib ipykernel
 
 ## Repository structure
+
+\'''
 quantum-hamiltonian-simulation/
 ├── README.md
 ├── pyproject.toml
@@ -85,10 +87,11 @@ quantum-hamiltonian-simulation/
     ├── test_operators.py
     ├── test_hamiltonian.py
     └── test_evolution.py
+\'''
 
 ## Notebooks
-- 01 — Pauli matrices and tensor products
-- 02 — exact time evolution
-- 03 — first-order Trotter (dense vs. exact)
-- 05 — error scaling and runtime benchmark
-(04, second-order Suzuki, planned as a follow-up)
+- `exact_time_evolution.ipynb` — exact diagonalization and time evolution
+- `first_order_trotter.ipynb` — first-order Trotter (dense vs. exact)
+- `error_scaling.ipynb` — error scaling and runtime benchmark
+
+(Second-order Suzuki: follow-up)

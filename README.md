@@ -4,8 +4,8 @@ Exact and Trotter-Suzuki simulation of the transverse-field Ising
 model, with error and runtime analysis benchmarked against theory.
 
 ```math
-\mathcal{H} = J\sum_{i \neq j}^{N-1} Z_iZ_j +
-h\sum_{i}^{N-1}\left( X_i + X_{i + 1} \right).
+\mathcal{H} = J\sum_{i = 1}^{N-1} Z_iZ_{i + 1} +
+h\sum_{i=1}^{N}X_i.
 ```
 
 ## Objective

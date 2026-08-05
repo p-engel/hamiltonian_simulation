@@ -20,8 +20,10 @@ provides on quantum hardware.
 
 For a first-order product formula, Lloyd (1996)	bounds the error by
 
-$$ \vert\vert U - U_{\rm trott} \vert\vert \leq (t^2 / 2n)
-\sum_{i<j} \vert\vert[H_i, H_j ] \vert\vert $$
+```math
+\vert\vert U - U_{\rm trott} \vert\vert \leq (t^2 / 2n)
+\sum_{i \lt j} \vert\vert[H_i, H_j ] \vert\vert
+```
 
 where $U = e^{-iHt}$ is the exact evolution operator, and $U_{\rm
 trott} = (e^{-iH_1t/n} \cdots e^{-iH_lt/n})^n$ is the $n$-step Trotter
@@ -68,7 +70,7 @@ pip install jupyter matplotlib ipykernel
 
 ## Repository structure
 
-\'''
+\```
 quantum-hamiltonian-simulation/
 ├── README.md
 ├── pyproject.toml
@@ -87,11 +89,10 @@ quantum-hamiltonian-simulation/
     ├── test_operators.py
     ├── test_hamiltonian.py
     └── test_evolution.py
-\'''
+\```
 
 ## Notebooks
 - `exact_time_evolution.ipynb` — exact diagonalization and time evolution
 - `first_order_trotter.ipynb` — first-order Trotter (dense vs. exact)
 - `error_scaling.ipynb` — error scaling and runtime benchmark
-
 (Second-order Suzuki: follow-up)

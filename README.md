@@ -39,15 +39,21 @@ curves are parallel on a log-log plot, confirming the correct
 first-order convergence rate, and the true error sits consistently
 below the bound across the full range of step counts tested.
 
-![Trotter error vs. theoretical bound](docs/figures/error_scaling.png)
-
+<!-- ![Trotter error vs. theoretical
+bound](docs/figures/error_scaling.png) -->
+<div align="center">
+  <img src="docs/figures/error_scaling.png" width="500">
+</div>
 
 **The efficient (tensor-contraction) implementation is dramatically
 faster.**
 
-![Runtime scaling](docs/figures/runtime_scaling.png)
+<div align="center">
+  <img src="docs/figures/runtime_scaling.png" width="500">
+</div>
+<!-- ![Runtime scaling](docs/figures/runtime_scaling.png) -->
 
-At N=12, exact matrix exponentiation takes ~27 s while the Trotter
+At $N=12$, exact matrix exponentiation takes ~27 s while the Trotter
 step takes ~5 ms, roughly a 5400x speedup. The exact method grows
 approximately as $e^{(1.53)N}$, which is somewhat less than the
 expected cubic scaling $e^{ln(8)N}$ in Hilbert space dimension

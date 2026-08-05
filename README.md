@@ -57,7 +57,7 @@ At $N=12$, exact matrix exponentiation takes ~27 s while the Trotter
 step takes ~5 ms, roughly a 5400x speedup. The exact method grows
 approximately as $e^{(1.53)N}$, which is somewhat less than the
 expected cubic scaling $e^{ln(8)N}$ in Hilbert space dimension
-($\mathcal{O}(8^N)$) for dense matrix exponentiation (plausibly
+with cost $\mathcal{O}(8^N)$ for dense matrix exponentiation (plausibly
 reflecting optimized linear algebra routines in scipy's `expm` rather
 than a departure from the theoretical asymptotic). The local
 implementation costs $\mathcal{O}(N \cdot 2^N)$ per trotter step,

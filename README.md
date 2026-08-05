@@ -21,16 +21,13 @@ simulating quantum dynamics, ultimately extending these techniques to
 open quantum systems.  As a first step, this repository implements
 exact and Trotter-Suzuki simulation of the transverse-field Ising
 model, validating theoretical error bounds and benchmarking
-computational performance.  Exploiting the locality of the Trotter
+computational performance. Exploiting the locality of the Trotter
 product formula avoids exponentiating the full Hamiltonian, yielding
-dramatically better scaling than dense matrix exponentiation.
-Exploiting the locality of the Trotter product formula avoids
-exponentiating the full Hamiltonian, yielding dramatically better
-scaling than dense matrix exponentiation.  The implementation also
-illustrates why product-formula methods are central to quantum
-computing: on quantum hardware, local evolution operators decompose
-naturally into quantum gates, allowing the simulation cost to scale
-polynomially with system size.
+dramatically better scaling than dense matrix exponentiation.  The
+implementation also illustrates why product-formula methods are
+central to quantum computing: on quantum hardware, local evolution
+operators decompose naturally into quantum gates, allowing the
+simulation cost to scale polynomially with system size.
 
 ## Result
 

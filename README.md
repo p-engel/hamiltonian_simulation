@@ -1,4 +1,4 @@
-# Quantum Hamiltonian Simulation
+# Hamiltonian Simulation
 
 Exact and Trotter-Suzuki simulation of the transverse-field Ising
 model, and error/runtime analysis verified against theory.
@@ -7,10 +7,10 @@ model, and error/runtime analysis verified against theory.
 
 The aim is to build toward simulating open quantum systems. As a
 concrete first step, this repo implements and verifies Hamiltonian
-simulation via Trotterization — including an efficient,
-local interaction implementation that demonstrates, classically,
-why the method scales far better than dense simulation, and sets up
-the connection to the genuine polynomial-time advantage Trotterization
+simulation via Trotterization, including an efficient, local
+interaction implementation that demonstrates why the method scales
+far better than dense matrix exponential simulation, and sets up the
+connection to the genuine polynomial-time advantage Trotterization
 provides on quantum hardware.
 
 ## Result

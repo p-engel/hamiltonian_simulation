@@ -76,7 +76,7 @@ pip install jupyter matplotlib ipykernel
 ## Repository structure
 
 ```
-quantum-hamiltonian-simulation/
+hamiltonian-simulation/
 ├── README.md
 ├── pyproject.toml
 ├── docs/

@@ -104,4 +104,4 @@ hamiltonian-simulation/
 - `exact_time_evolution.ipynb` — exact diagonalization and time evolution
 - `first_order_trotter.ipynb` — first-order Trotter (dense vs. TPF)
 - `error_scaling.ipynb` — error scaling and runtime benchmark
-(Second-order Suzuki: follow-up)
+- (Second-order Suzuki: follow-up)

@@ -74,7 +74,7 @@ $\mathcal{O}(1)$, independent of $N$, and a full Trotter step needs
 only $\mathcal{O}(N)$ such gates, polynomial overall.
 
 ## Setup
-pip install -e .
+pip install -e .\
 pip install jupyter matplotlib ipykernel
 
 ## Repository structure
@@ -102,6 +102,6 @@ hamiltonian-simulation/
 
 ## Notebooks
 - `exact_time_evolution.ipynb` — exact diagonalization and time evolution
-- `first_order_trotter.ipynb` — first-order Trotter (dense vs. exact)
+- `first_order_trotter.ipynb` — first-order Trotter (dense vs. TPF)
 - `error_scaling.ipynb` — error scaling and runtime benchmark
 (Second-order Suzuki: follow-up)

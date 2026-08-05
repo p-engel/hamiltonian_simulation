@@ -56,19 +56,18 @@ faster.**
 At $N=12$, exact matrix exponentiation takes ~27 s while the Trotter
 step takes ~5 ms, roughly a 5400x speedup. The exact method grows
 approximately as $e^{(1.53)N}$, which is somewhat less than the
-expected cubic scaling $e^{ln(8)N}$ in Hilbert space dimension
-with cost $\mathcal{O}(8^N)$ for dense matrix exponentiation (plausibly
-reflecting optimized linear algebra routines in scipy's `expm` rather
-than a departure from the theoretical asymptotic). The local
-implementation costs $\mathcal{O}(N \cdot 2^N)$ per trotter step,
-since a classical computer must store the full $\mathcal{O}(2^N)$
-dimensional state. Both algorithms are exponential in $N$, but
-trotterization's much smaller effective exponent explains the dramatic
-speedup observed here. The genuine polynomial-time advantage
-Trotterization is known for is specific to real quantum hardware: a
-single local gate costs $\mathcal{O}(1)$, independent of $N$, and a
-full Trotter step needs only $\mathcal{O}(N)$ such gates, polynomial
-overall, not exponential.
+expected cubic scaling $e^{ln(8)N}$ with cost $\mathcal{O}(8^N)$ for
+dense matrix exponentiation (plausibly reflecting optimized linear
+algebra routines in scipy's `expm` rather than a departure from the
+theoretical asymptotic). The local implementation costs $\mathcal{O}(N
+\cdot 2^N)$ per trotter step, since a classical computer must store
+the full $\mathcal{O}(2^N)$ dimensional state. Both algorithms are
+exponential in $N$, but trotterization's much smaller effective
+exponent explains the dramatic speedup observed here. The genuine
+polynomial-time advantage Trotterization is known for is specific to
+real quantum hardware: a single local gate costs $\mathcal{O}(1)$,
+independent of $N$, and a full Trotter step needs only
+$\mathcal{O}(N)$ such gates, polynomial overall, not exponential.
 
 ## Setup
 pip install -e .

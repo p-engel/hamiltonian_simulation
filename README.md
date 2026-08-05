@@ -49,8 +49,8 @@ bound](docs/figures/error_scaling.png) -->
 dramatically faster.**
 
 At $N=12$, exact matrix exponentiation of the systems evolution takes
-$\approx 27 {\rm s}$ while the evolution via Trotterization takes $
-\approx 5 {\rm ms}$ ms, roughly a 5400x speedup. The exact method
+$\approx 27 {\rm s}$ while the evolution via Trotterization takes
+$\approx 5 {\rm ms}$, roughly a 5400x speedup. The exact method
 grows approximately as $e^{(1.53)N}$, which is somewhat less than the
 expected cubic scaling $e^{ln(8)N}$, with cost $\mathcal{O}(8^N)$, for
 dense matrix exponentiation. (The discrepancy plausibly reflects

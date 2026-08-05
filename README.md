@@ -1,17 +1,17 @@
 # Hamiltonian Simulation
 
 Exact and Trotter-Suzuki simulation of the transverse-field Ising
-model, and error/runtime analysis verified against theory.
+model, with error and runtime analysis benchmarked against theory.
 
-## Why this repo
+## Objective
 
 The aim is to build toward simulating open quantum systems. As a
-concrete first step, this repo implements and verifies Hamiltonian
-simulation via Trotterization, including an efficient, local
-interaction implementation that demonstrates why the method scales
-far better than dense matrix exponential simulation, and sets up the
-connection to the genuine polynomial-time advantage Trotterization
-provides on quantum hardware.
+concrete first step, this repository implements and benchmarks
+Hamiltonian simulation using Trotterization. The local interaction
+implementation from Trotter product formula scales far better than the
+dense matrix exponential simulation. The result highlights the
+connection to the polynomial-time advantage Trotterization provides on
+quantum hardware.
 
 ## Result
 
@@ -27,11 +27,11 @@ For a first-order product formula, Lloyd (1996)	bounds the error by
 
 where $U = e^{-iHt}$ is the exact evolution operator, and $U_{\rm
 trott} = (e^{-iH_1t/n} \cdots e^{-iH_lt/n})^n$ is the $n$-step Trotter
-product. Each local operator $e^{-iH_it/n}$ acts on a Hilbert space of only
-$m=4$ dimensions (two neighboring qubits), rather than the full $2^N$
-dimensional space of the whole system of N qubits in the full hilbert
-space in $H$. This locality is what the efficient implementation
-exploits directly, via tensor contraction rather than dense matrix
+product. Each local operator $e^{-iH_it/n}$ acts on a Hilbert space of
+only $m=4$ dimensions (of nearest neighbors), rather than the full
+$2^N$ dimensional Hilbert space in $H$, of the whole system of N
+qubits. This locality is what the efficient implementation exploits
+directly, via tensor contraction rather than dense matrix
 exponentiation.
 
 The measured error tracks the bound's scaling closely; both
@@ -45,29 +45,32 @@ bound](docs/figures/error_scaling.png) -->
   <img src="docs/figures/error_scaling.png" width="500">
 </div>
 
-**The efficient (tensor-contraction) implementation is dramatically
-faster.**
+**The efficient (tensor-contraction) Trotter implementation is
+dramatically faster.**
+
+At $N=12$, exact matrix exponentiation of the systems evolution takes
+$\approx 27 {\rm s}$ while the evolution via Trotterization takes ~5
+ms, roughly a 5400x speedup. The exact method grows approximately as
+$e^{(1.53)N}$, which is somewhat less than the expected cubic scaling
+$e^{ln(8)N}$, with cost $\mathcal{O}(8^N)$, for dense matrix
+exponentiation. (The discrepancy plausibly reflects optimized linear
+algebra routines in scipy's module: `expm`, rather than a departure
+from the theoretical asymptotic.) The implementation of Trotter
+product formula costs $\mathcal{O}(N \cdot 2^N)$ per trotter step,
+since a classical computer must store the full $\mathcal{O}(2^N)$
+dimensional state. Both algorithms are exponential in $N$, but
+trotterization has a much smaller effective exponent and thus yields
+the dramatic speedup observed in the Figure on runtime scaling cost.
 
 <div align="center">
   <img src="docs/figures/runtime_scaling.png" width="500">
 </div>
 <!-- ![Runtime scaling](docs/figures/runtime_scaling.png) -->
 
-At $N=12$, exact matrix exponentiation takes ~27 s while the Trotter
-step takes ~5 ms, roughly a 5400x speedup. The exact method grows
-approximately as $e^{(1.53)N}$, which is somewhat less than the
-expected cubic scaling $e^{ln(8)N}$ with cost $\mathcal{O}(8^N)$ for
-dense matrix exponentiation (plausibly reflecting optimized linear
-algebra routines in scipy's `expm` rather than a departure from the
-theoretical asymptotic). The local implementation costs $\mathcal{O}(N
-\cdot 2^N)$ per trotter step, since a classical computer must store
-the full $\mathcal{O}(2^N)$ dimensional state. Both algorithms are
-exponential in $N$, but trotterization's much smaller effective
-exponent explains the dramatic speedup observed here. The genuine
-polynomial-time advantage Trotterization is known for is specific to
-real quantum hardware: a single local gate costs $\mathcal{O}(1)$,
-independent of $N$, and a full Trotter step needs only
-$\mathcal{O}(N)$ such gates, polynomial overall, not exponential.
+The genuine polynomial-time advantage Trotterization is known for is
+specific to real quantum hardware, where a single local gate costs
+$\mathcal{O}(1)$, independent of $N$, and a full Trotter step needs
+only $\mathcal{O}(N)$ such gates, polynomial overall.
 
 ## Setup
 pip install -e .
